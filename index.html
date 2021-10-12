@@ -141,47 +141,37 @@
     </script>
   </head>
   <body>
-    <a-scene webxr="requiredFeatures: hit-test,local-floor;">
+    <a-scene webxr="requiredFeatures: hit-test,local-floor;" renderer="colorManagement: true">
       <a-assets>
-        <!-- Model source: https://sketchfab.com/3d-models/spinosaurus-2135501583704537907645bf723685e7
-             Model author: https://sketchfab.com/VapTor
-             Model license: CC Attribution -->
         <a-asset-item id="spinosaurus" src="./models/Alien.glb" response-type="arraybuffer"></a-asset-item>
-
         <a-asset-item id="reticle" src="reticle.gltf" response-type="arraybuffer"></a-asset-item>
       </a-assets>
 
-      <a-camera position="0 1.2 0"></a-camera>
+      <a-camera position="0 3.2 0"></a-camera>
 
       <!-- Environment for 2D and VR viewing. It's auto-hidden in AR mode. -->
       <!-- <a-entity environment="preset: forest; lighting: none; shadow: none; lightPosition: 0 2.15 0" hide-in-ar-mode></a-entity> -->
 
       <a-entity id="dino" position="-1 0 -3" scale="0.5 0.5 0.5">
-        <a-entity
-          position="0 2.15 0"
-          rotation="0 55 0"
-          gltf-model="#spinosaurus"
-          animation-mixer
-          shadow="cast: true; receive: false"
-        ></a-entity>
+        <a-entity position="0 2.15 0" rotation="0 55 0" gltf-model="#spinosaurus" animation-mixer shadow="cast: true; receive: false">
+        </a-entity>
 
         <!-- This shadow-receiving plane is only visible in AR mode.-->
         <a-plane height="30" width="30" rotation="-90 0 0" shadow="receive: true" ar-shadows="opacity: 0.2" visible="false"></a-plane>
       </a-entity>
 
-      <a-entity light="type: hemisphere; intensity: 1"></a-entity>
       <a-light
         type="directional"
         light="castShadow: true;
-                      shadowMapHeight: 1024;
-                      shadowMapWidth: 1024;
-                      shadowCameraLeft: -7;
-                      shadowCameraRight: 5;
-                      shadowCameraBottom: -5;
-                      shadowCameraTop: 5;"
+          shadowMapHeight: 1024;
+          shadowMapWidth: 1024;
+          shadowCameraLeft: -7;
+          shadowCameraRight: 5;
+          shadowCameraBottom: -5;
+          shadowCameraTop: 5;"
         id="light"
         target="dino"
-        position="-2 4 2"
+        position="1 -1 -0.5"
       >
       </a-light>
 
